@@ -1,9 +1,9 @@
-function Paddle(pos) {
+function Paddle(pos,sSlider) {
   this.x;
   this.y = height/2;
-  this.h = 100;
+  this.h = sSlider;
   this.w = 10;
-  this.score = 0;
+  this.score = 10;
   this.mUp = false;
   this.mDown = false;
     this.re = 255;
