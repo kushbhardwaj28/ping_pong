@@ -67,11 +67,11 @@ function keyPressed(){
   if(key === 'M'){
     right.mDown = true;
   }
-  if(key === 'P' && pause == false){
+  if(key === 'P' || key ==" " && pause == false){
     pause = true;
       noLoop();
   }
-  else  if(key === 'P' && pause == true){
+  else  if(key === 'P' || key ==" " && pause == true){
     pause = false;
       loop();
   }
