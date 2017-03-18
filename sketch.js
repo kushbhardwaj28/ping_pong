@@ -40,7 +40,7 @@ function draw(){
     push();
     stroke(127);
     strokeWeight(4);
-  beginShape();
+  beginShape(LINES);
     vertex(0,2);
     vertex(width,2);
     vertex(width,height-2);
