@@ -6,6 +6,10 @@ function Paddle(pos) {
   this.score = 0;
   this.mUp = false;
   this.mDown = false;
+    this.re = 255;
+    this.g = 255;
+    this.b = 255;
+  
     if(pos){
       this.x = 10;
     } else{
@@ -13,16 +17,32 @@ function Paddle(pos) {
     }
   
   this.show = function(){
-   this.y = constrain(this.y, this.h/2, height-this.h/2);
+      this.y = constrain(this.y, this.h/2, height-this.h/2);
    this.moveUp();
    this.moveDown();
    if(this.x == 10){
-    fill(255, 102, 0);
+    this.re = 255;
+    this.g = 102;
+    this.b = 0;
    }else if(this.x == width-10){
-    fill(0, 204, 255);
+        this.re = 0;
+        this.g = 204;
+        this.b = 255;
    }
+   fill(this.re, this.g, this.b);
    noStroke();
    rect(this.x,this.y,this.w,this.h,10);
+      var s = 5;
+      for(var i = 0; i<10; i++){
+          push();
+          var x = this.w+i;
+          var y = this.h+i;
+          fill(this.re, this.g, this.b,s);
+          noStroke();
+          rect(this.x,this.y,x,y,10);
+          pop();
+          s += 1;
+      }
   }
   
   this.scoreLeft = function(p){
