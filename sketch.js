@@ -41,11 +41,12 @@ function draw(){
     stroke(127);
     strokeWeight(4);
   beginShape();
-    vertex(0,4);
-    vertex(width,4);
-    vertex(width,height-4);
-    vertex(0,height-4);
-  endShape(CLOSE);
+    vertex(0,2);
+    vertex(width,2);
+    vertex(width,height-2);
+    vertex(0,height-2);
+    vertex(0,2);
+  endShape();
   line(700/2,0,700/2,400);
     pop();
 }
