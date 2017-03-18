@@ -8,6 +8,7 @@ function Puck() {
     this.re = 255;
     this.g = 255;
     this.b = 255;
+  this.history = [];
 
   this.show = function() {
 
