@@ -42,6 +42,7 @@ function draw(){
     strokeWeight(4);
   line(0,0,width,0);
   line(700/2,0,700/2,400);
+  line(0,height,width,height);
     pop();
 }
 
