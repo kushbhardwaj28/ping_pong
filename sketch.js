@@ -40,13 +40,14 @@ function draw(){
     push();
     stroke(127);
     strokeWeight(4);
+  noFill();
   beginShape(LINES);
     vertex(0,2);
     vertex(width,2);
     vertex(width,height-2);
     vertex(0,height-2);
     vertex(0,2);
-  endShape();
+  endShape(CLOSE);
   line(700/2,0,700/2,400);
     pop();
 }
