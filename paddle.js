@@ -13,6 +13,7 @@ function Paddle(pos) {
     }
   
   this.show = function(){
+   this.y = constrain(this.y, this.h/2, height-this.h/2);
    this.moveUp();
    this.moveDown();
    if(this.x == 10){
