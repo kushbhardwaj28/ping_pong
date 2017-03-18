@@ -14,11 +14,26 @@ function Puck() {
     fill(this.re,this.g,this.b);
     noStroke();
     ellipse(this.x, this.y, this.r, this.r);
+    var s = 5;
+      for(var i = 0; i<this.history.length; i++){
+          var pos = this.history[i];
+          push();
+          fill(this.re,this.g,this.b,s);
+          noStroke();
+          ellipse(pos.x,pos.y,20,20);
+          pop();
+          s += 2;
+      }
   }
 
   this.update = function() {
     this.x += this.xspeed;
     this.y += this.yspeed;
+    var v = createVector(this.x,this.y);
+    this.history.push(v);
+    if(this.history.length >10){
+      this.history.splice(0,1);
+    }
   }
 
   this.checkPaddleLeft = function(p) {
