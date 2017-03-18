@@ -2,20 +2,62 @@
 var left;
 var right;
 var puck;
-var pause = false;
+var pause = true;
 var x =0;
-
+var sizeSlider = 100;
+var maxScore;
+    var maxScore1;
 function setup(){
   createCanvas(700,400);
   rectMode(CENTER);
+//  sizeSlider = createSlider(10,100,100);
   puck =new Puck();
-  left = new Paddle(true);
-  right = new Paddle(false);
+  left = new Paddle(true,sizeSlider);
+  right = new Paddle(false,sizeSlider);
+   var maxScore = document.getElementById("limit").value;
+    var maxScore1 = document.getElementById("limit").value;
 //    rules();
 }
 
 function draw(){
   background(51);
+// Draw the boundary    
+    push();
+    stroke(127);
+    strokeWeight(4);
+    noFill()
+    beginShape();
+        vertex(0,0);
+        vertex(width,0);
+        vertex(width,height);
+        vertex(0,height);
+    endShape(CLOSE);
+    line(700/2,0,700/2,400);
+    pop();
+
+    
+    maxScore = document.getElementById("limit").value;
+    if(maxScore == 0){
+        maxScore = 1000;
+    }
+    if(maxScore != maxScore1){
+        left.score = 0;
+        right.score = 0;
+        maxScore1 = maxScore;
+    }
+    if(left.score == maxScore){
+        alert("Orange Wins");
+        left.score = 0;
+        right.score = 0;
+        pause = true;
+        reset();
+    }else if(right.score == maxScore){
+        alert("Blue Wins");
+        left.score = 0;
+        right.score = 0;
+        pause = true;
+        reset();
+    }
   puck.update();
   puck.checkPaddleLeft(left);
   puck.checkPaddleRight(right);
@@ -37,27 +79,18 @@ function draw(){
   if(puck.y + (puck.r/2)>height || puck.y -(puck.r/2)<0){
     puck.yspeed *= -1;
   }
-    push();
-    stroke(127);
-    strokeWeight(4);
-  noFill();
-  beginShape(LINES);
-    vertex(0,2);
-    vertex(width,2);
-    vertex(width,height-2);
-    vertex(0,height-2);
-    vertex(0,2);
-  endShape(CLOSE);
-  line(700/2,0,700/2,400);
-    pop();
+    
+    if(pause){
+        noLoop();
+    }
+    
 }
 
-function keyPressed(){  
-  if(key === "W"){
-      console.log("asa");
+function keyPressed(){
+  if(key === "A"){
     left.mUp= true;
   }
-  if(key === 'S'){
+  if(key === 'Z'){
     left.mDown = true;
   }
      
@@ -67,11 +100,10 @@ function keyPressed(){
   if(key === 'M'){
     right.mDown = true;
   }
-  if(key === 'P' || key ==" " && pause == false){
+  if(key ==' ' && pause == false){
     pause = true;
       noLoop();
-  }
-  else  if(key === 'P' || key ==" " && pause == true){
+  }else if(key ==' ' && pause == true){
     pause = false;
       loop();
   }
@@ -79,10 +111,10 @@ function keyPressed(){
 
 
 function keyReleased(){  
-  if(key === 'W'){
+  if(key === 'A'){
     left.mUp = false;
   }
-  if(key === 'S'){
+  if(key === 'Z'){
     left.mDown = false;
   }
      
@@ -106,16 +138,6 @@ function keyReleased(){
       puck.re = 255;
       puck.g = 255;
       puck.b = 255;
-}
-
-
-function rules() {
-    var canvas = document.getElementById("defaultCanvas0");
-    var rule = document.createElement("h2");
-    var data = document.createTextNode("Rules");
-    rule.appendChild(data);
-    canvas.after(rule,canvas);
-    canvas.insertAfter
 }
 
 
