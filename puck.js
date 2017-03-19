@@ -42,8 +42,8 @@ function Puck() {
     if (this.y < p.y + p.h/2 && this.y > p.y - p.h/2 &&  this.x-this.r < p.x - p.w/2) {
         var diff = this.y-(p.y-p.h/2);
         var a = map(diff,0,p.h,-radians(45),radians(45));
-        this.xspeed = 10*cos(a);
-        this.yspeed = 10*sin(a);
+        this.xspeed = 100*cos(a);
+        this.yspeed = 100*sin(a);
 
         this.re = 255;
         this.g = 102;
@@ -54,8 +54,8 @@ function Puck() {
     if (this.y<p.y+p.h/2 && this.y>p.y-p.h/2 && this.x+this.r>p.x+p.w/2) {
         var diff = this.y - (p.y - p.h/2);
         var a = map(diff,0,p.h,radians(255),radians(135));
-        this.xspeed = 10*cos(a);
-        this.yspeed = 10*sin(a);
+        this.xspeed = 100*cos(a);
+        this.yspeed = 100*sin(a);
 
         this.re = 0;
         this.g = 204;
