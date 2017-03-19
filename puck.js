@@ -44,8 +44,8 @@ function Puck() {
         var a = map(diff,0,p.h,-radians(45),radians(45));
         this.xspeed = 5*cos(a);
         this.yspeed = 5*sin(a);
-        this.xspeed += 2;
-        this.yspeed += 2;
+        this.xspeed += 4;
+        this.yspeed += 4;
         this.re = 255;
         this.g = 102;
         this.b = 0;
@@ -57,8 +57,8 @@ function Puck() {
         var a = map(diff,0,p.h,radians(255),radians(135));
         this.xspeed = 5*cos(a);
         this.yspeed = 5*sin(a);
-        this.xspeed -= 2;
-        this.yspeed -= 2;
+        this.xspeed -= 4;
+        this.yspeed -= 4;
         this.re = 0;
         this.g = 204;
         this.b = 255;
